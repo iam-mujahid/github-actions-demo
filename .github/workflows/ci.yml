@@ -1,33 +1,34 @@
-# here we are naming the github actions workflow
-name: My First Github actions workflow
-# here we are specifiying or informing github to run the workflow on push action happens on the repo or setting push as trigger
+name: My First GitHub Actions Workflow
+
 on:
   push:
     branches:
       - main
 
-# creating the jobs for running or performing the task or actions 
 jobs:
-  # here is the name of build
-  Hello:
+
+  test:
     runs-on: ubuntu-latest
-    # here we are mentioning to run the job on ubuntu machine and git hub provides runner for us can say ubuntu runner
+
     steps:
       - name: Checkout repository
-        uses: actions/Checkout@v4
-        # here this command downloads the repository to the current workspace
-      # steps are the individual things that runner executes or we want to perform
-      - name: Say hello
-        run: echo "Hello from github actions"
-        # here we are creating the list of things to perform above name of step is greeting run is used to execute the command here it prints the text
-      - name: Show current working directory
-        run: pwd
-      
-      - name: List files
-        run: ls -la
+        uses: actions/checkout@v4
 
-      - name: Successful command
-        run: echo "The pipeline is working!"
-        
-      - name: Another successful command
-        run: echo "All steps completed!"
+      - name: Test
+        run: echo "Running tests..."
+
+      - name: Test successful
+        run: echo "Tests passed!"
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: echo "Building application..."
+
+      - name: Build successful
+        run: echo "Build completed!"
