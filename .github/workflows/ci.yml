@@ -19,8 +19,10 @@ jobs:
 
       - name: Test successful
         run: echo "Tests passed!"
+      # - name: 
 
   build:
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
