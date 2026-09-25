@@ -9,12 +9,15 @@ on:
 # creating the jobs for running or performing the task or actions 
 jobs:
   # here is the name of build
-  firstBuild:
+  Hello:
     runs-on: ubuntu-latest
     # here we are mentioning to run the job on ubuntu machine and git hub provides runner for us can say ubuntu runner
     steps:
+      - name: Checkout repository
+        uses: actions/Checkout@v4
+        # here this command downloads the repository to the current workspace
       # steps are the individual things that runner executes or we want to perform
-      - name: greetings
+      - name: Say hello
         run: echo "Hello from github actions"
         # here we are creating the list of things to perform above name of step is greeting run is used to execute the command here it prints the text
       - name: Show current working directory
