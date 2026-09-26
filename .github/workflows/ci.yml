@@ -12,14 +12,17 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Test
         run: echo "Running tests..."
 
+      - name: test check 
+        run: exit 1
+
       - name: Test successful
         run: echo "Tests passed!"
-      # - name: 
+    
 
   build:
     needs: test
@@ -27,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Build
         run: echo "Building application..."
