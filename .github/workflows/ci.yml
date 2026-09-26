@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - main
+# global environment cariables accessible by all jobs 
+env:
+  my_owner: allah
 
 jobs:
-  env:
-    myName: abbas
 
   test:
     runs-on: ubuntu-latest
@@ -35,9 +36,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+      - name: Login to Docker
+      # here i am using reuasble prebuilt action made by some to login dokcer hub rather making own stuff whihc takes time
+        uses: actions/login-action@v4
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+        # here using the place holder to access credentials here from where we saved our credentials 
 
-      - name: Build
-        run: echo "Building application by $myName..."
+        # //////////////////////////////////////
+      - name: Build and push docker image to registry
+        uses: docker/build-push-action@v7
+        with:
+          push: true
+          tags: mujahidhub/github-actions-demo:latest
 
-      - name: Build successful
-        run: echo "Build completed!"
+      # here i am using reusable prebuilt acton made by someone to build a doker image and push it to registry 
+      - 
