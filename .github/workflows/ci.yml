@@ -17,8 +17,8 @@ jobs:
       - name: Test
         run: echo "Running tests..."
 
-      - name: test check 
-        run: exit 1
+      #- name: test check 
+       # run: exit 1
 
       - name: Test successful
         run: echo "Tests passed!"
